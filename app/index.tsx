@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,Platform, ImageBackground ,Pressable, TextInput, Image} from 'react-native';
 import {SafeAreaView} from "react-native-safe-area-context";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import "../global.css"
-import Router from '../component/home/Router';
+
+import Router from '../components/home/Router';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Feather from '@expo/vector-icons/Feather';
@@ -13,7 +13,7 @@ import {Link} from "expo-router";
 import { Theme } from '../theme';
 export default function Index() {
   return (
-    <SafeAreaView className='bg-white-100 min-h-screen 'style={{paddingTop:Platform.OS==="android"? 24:0}}>
+    <SafeAreaView className='bg-white-100 min-h-screen 'style={{paddingTop:Platform.OS==="android"? 20:0}}>
       
       
       <ImageBackground source={require("../assets/bg.jpg")} className='w-full h-full' blurRadius={5}>
@@ -30,9 +30,9 @@ export default function Index() {
             <FontAwesome5 name="map-marker-alt" size={24} color={Theme.orange} />
           <Text className=' font-bold text-xl'>Yangon city</Text>
         </View>
-        <Pressable hitSlop={20}>
-       <Link href="/" asChild>
-        <FontAwesome5 name="ellipsis-v" size={24} color="black" />
+        <Pressable hitSlop={30}>
+       <Link href="/forecast" asChild>
+        <FontAwesome5 name="ellipsis-v" size={24} color="black" className="bg-white p-4 rounded-2xl "/>
        </Link>
     </Pressable>
       </View>
@@ -52,6 +52,7 @@ export default function Index() {
   </Text>
   <Text className='text-7xl absolute right-36 top-4'>°</Text>
   <Text className='text-blue-200 text-2xl mx-auto'> THUNDERCLOUD</Text>
+  <Router/>
 </View>
 <View className='flex-row justify-around mt-6'>
   
