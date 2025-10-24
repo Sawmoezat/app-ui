@@ -15,7 +15,7 @@ const WeatherItem = ({wdata}:itemData) => {
         <Text className='text-xl text-blue-400 font-bold'>
 {day}
         </Text>
-        <View className='items-center flex-row'>
+        <View className='items-center flex-row '>
 <MaterialCommunityIcons name="cloud-question-outline" size={34} color="black" className=''/>
         <Text className='text-xl text-blue-400'>{weather}</Text>
         </View>

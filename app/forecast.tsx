@@ -31,7 +31,7 @@ const forecast = () => {
           <Text className=' font-bold text-xl'>7 Day</Text>
         </View>
         <Pressable hitSlop={30}>
-       <Link href="/forecast" asChild>
+       <Link href="/Qrcode" asChild>
         <MaterialIcons name="qr-code-2" size={34} color="black" />
        </Link>
     </Pressable>
@@ -71,7 +71,7 @@ const forecast = () => {
 
 
 </View>
-<View className='bg-white shawdow rounded-2xl'>
+<View className='bg-white shawdow rounded-2xl flex-1'>
     <WeatherList/>
     </View>
      

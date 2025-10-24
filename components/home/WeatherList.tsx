@@ -20,6 +20,12 @@ export type typeInfo={day:string;
 },
 {day:"sat",weather:"sunny",temp:"25f",
 },
+{day:"sun",weather:"sunny",temp:"25f",
+},
+{day:"sun1",weather:"sunny",temp:"25f",
+},
+{day:"sun2",weather:"sunny",temp:"25f",
+},
 ];
 const [weatherData,setWeatherData]=useState(weatherInfo);
 const WeatherList = () => {
