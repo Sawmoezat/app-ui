@@ -12,8 +12,14 @@ import Feather from '@expo/vector-icons/Feather';
 import Entypo from '@expo/vector-icons/Entypo';
 import { Theme } from '../theme';
 import WeatherList from '../components/home/WeatherList';
+import { useDataStore } from '../stores/stores';
+import { collection,CollectData,dateCute} from '../collect';
 
-const forecast = () => {
+const Forecast = () => {
+  const temp= useDataStore((state)=>state.current_weather);
+  const nimi=CollectData(temp.weathercode);
+  const twoSun= useDataStore((state)=>state.daily);
+  console.log("Time:",twoSun.sunrise[0])
   return (
     <SafeAreaView className="bg-white min-h-screen" edges={['top']} style={{paddingTop:Platform.OS==="android"? 24:0}}>
         <ImageBackground source={require("../assets/bg.jpg")} className='h-full w-full ' blurRadius={5}>
@@ -38,16 +44,23 @@ const forecast = () => {
       </View>
 
 <View className='flex-row justify-evenly '>
-    <Image source={require('../assets/storm.png')} className='h-40 w-40 mt-4 '/>
+
+  {/*---------------------img----------------------------*/}
+    <Image source={nimi?.img} className='h-40 w-40 mt-4 '/>
+    
     <View className='relative'>
   <Text className="text-[6rem]  text-blue-300 ">
-    25
+    {temp.temperature.toFixed()}
   </Text>
+
+  {/*----------------------temperature------------------------*/}
+
   <Text className='text-7xl absolute -right-1 text-blue-300 '>°</Text>
   
   
 </View>
 </View>
+{/*-----------------------3icon-----------------------*/}
 
 <View className='flex-row justify-around mt-4 mb-2'>
   
@@ -55,7 +68,7 @@ const forecast = () => {
   <View className='bg-white shadow items-center bg-blue-200 rounded-xl  p-6'>
     <Feather name="sunrise" size={24} color="black" />
     
-    <Text className='font-bold mt-2'>sunrise</Text>
+    <Text className='font-bold mt-2'>{dateCute(twoSun.sunrise[0])}</Text>
     
   </View>
 
@@ -66,7 +79,7 @@ const forecast = () => {
 
   <View className='bg-white shadow items-center bg-blue-200 rounded-xl  p-6'>
     <Feather name="sunset" size={24} color="black" />
-    <Text className='font-bold mt-2 '>sunset</Text>
+    <Text className='font-bold mt-2 '>{dateCute(twoSun.sunset[0])}</Text>
   </View>
 
 
@@ -80,4 +93,4 @@ const forecast = () => {
   )
 }
 
-export default forecast
+export default Forecast
